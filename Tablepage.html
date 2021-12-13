@@ -1,0 +1,735 @@
+<html>
+    <head>
+        <title>Spotify Wrapped Top Artists, Albums, and Songs</title>
+
+        <div class = "navbar" >
+            <a href = "index.html#Overview"> Overview </a>
+            <a class = "active" href="Tablepage.html#Statistics"> Statistics </a>
+            <a id="About" href = "About.html#About"> About </a>
+        </div>
+
+        <style>
+            table, th, td {
+                border: 5px solid rgb(255, 255, 255);
+                border-collapse: collapse;
+                color:rgb(255, 255, 255);
+                font-family: 'Helvetica', sans-serif;
+                font-size: 50px;
+                text-align: center;
+                padding: 10px; 
+                margin-bottom: 30px; 
+            }
+            .colHeading {
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+        </style>
+        <link href = "Style.css" rel = "stylesheet">
+    </head>
+    <body>
+        <p>
+        <h1 class = "title" > Top Artists of 2021 </h1>
+        <img id="tSwiftPics" class = "right" style = 'float:right' width="40%" height="70%" src="allPics/tSwift/tSwift.jpg">
+        <table class = "left">
+            <tr class = "headcolor">
+                <th class="colHeading" id="firstTableNumCol"> Rank </th>
+                <th class="colHeading" id="firstTableAlphCol">Artist</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Bad Bunny</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Taylor Swift</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>BTS</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Drake</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Justin Bieber</td>
+            </tr>
+        </table>
+        </p>
+
+        <p>
+        <h1 class = "title" > Top Albums of 2021 </h1>
+        <img id="drakePics" class = "left" style = 'float:left' width="30%" height="60%" src="allPics/drake/drake.jpg">
+        <table class = "right">
+            <tr class = headcolor>
+                <th class="colHeading" id="secondTableNumCol"> Rank </th>
+                <th class="colHeading" id="secondTableAlphCol1"> Album </th>
+                <th class="colHeading" id="secondTableAlphCol2"> Artist </th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td> <i> SOUR </i> </td>
+                <td> Olivia Rodrigo </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td> <i> Future Nostalgia </i> </td>
+                <td> Dua Lipa </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td> <i> Justice </i> </td>
+                <td> Justin Bieber </td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td> <i> = </i> </td>
+                <td> Ed Sheeran </td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td> <i> Planet Her </i> </td>
+                <td> Doja Cat </td>
+            </tr>
+        </table>
+        </p>
+
+        <p>
+        <h1 class = "title" > Top Songs of 2021 </h1>
+        <table class = "lasttable">
+            <tr class = headcolor>
+                <th class="colHeading" id="thirdTableNumCol"> Rank </th>
+                <th class="colHeading" id="thirdTableAlphCol1"> Song </th>
+                <th class="colHeading" id="thirdTableAlphCol2"> Artist </th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td> <q> drivers license </q> </td>
+                <td> Olivia Rodrigo </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td> <q> MONTERO(Call Me By Your Name) </q> </td>
+                <td> Lil Nas X </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td> <q> STAY(with Justin Bieber) </q> </td>
+                <td> Justin Bieber </td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td> <q> good 4 u </q> </td>
+                <td> Olivia Rodrigo </td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td> <q> Levitating(feat. DaBaby) </q> </td>
+                <td> Dua Lipa </td>
+            </tr>
+        </table>
+        <img id="duaLipaPics" width="33%" height="60%" src="allPics/duaLipa/duaLipa.jpg">
+        <img id="bieberPics" width="33%" height="60%" src="allPics/bieber/bieber.jpg">
+        <img id="btsPics" width="33%" height="60%" src="allPics/bts/bts.jpg">
+        </p>
+
+
+        <script>
+            let firstTableRows = document.body.getElementsByTagName("table")[0].childNodes[1].getElementsByTagName("tr")
+            let secondTableRows = document.body.getElementsByTagName("table")[1].childNodes[1].getElementsByTagName("tr")
+            let thirdTableRows = document.body.getElementsByTagName("table")[2].childNodes[1].getElementsByTagName("tr")
+
+            let firstTableAlphabeticallyUp = function() {
+                let state = "unordered"
+                let results = 0
+                while (state == "unordered") {
+                    resuolts = 0
+                    for (let i = 1; i < firstTableRows.length; i += 1) {
+                        let currentData = firstTableRows[i].getElementsByTagName("td")[1]
+                        let currentRow = firstTableRows[i]
+                        tally = 1
+                        for (let n = 1; n < firstTableRows.length; n += 1) {
+                            let result = currentData.textContent.toLowerCase() < firstTableRows[n].getElementsByTagName("td")[1].textContent.toLowerCase()
+                            tally += result
+                        }
+                        document.body.getElementsByTagName("table")[0].childNodes[1].insertBefore(currentRow, firstTableRows[tally])
+                    }
+                    for (let x = 1; x < firstTableRows.length - 1; x += 1) {
+                        results += firstTableRows[x].getElementsByTagName("td")[1].textContent.toLowerCase() >= firstTableRows[(x + 1)].getElementsByTagName("td")[1].textContent.toLowerCase()
+                        if (results == (firstTableRows.length - 2)) {
+                            state = "ordered"
+                        }
+                    }
+                }
+                firstTableAlphCol.removeEventListener("click", firstTableAlphabeticallyUp)
+                firstTableAlphCol.addEventListener("click", firstTableAlphabeticallyDown)
+            }
+            let firstTableAlphabeticallyDown = function() {
+                let state = "unordered"
+                let results = 0
+                while (state == "unordered") {
+                    results = 0
+                    for (let i = 1; i < firstTableRows.length; i += 1) {
+                        let currentData = firstTableRows[i].getElementsByTagName("td")[1]
+                        let currentRow = firstTableRows[i]
+                        tally = firstTableRows.length
+                        for (let n = 1; n < firstTableRows.length; n += 1) {
+                            let result = currentData.textContent.toLowerCase() < firstTableRows[n].getElementsByTagName("td")[1].textContent.toLowerCase()
+                            tally -= result
+                        }
+                        document.body.getElementsByTagName("table")[0].childNodes[1].insertBefore(currentRow, firstTableRows[tally])
+                    }
+                    for (let x = 1; x < firstTableRows.length - 1; x += 1) {
+                        results += firstTableRows[x].getElementsByTagName("td")[1].textContent.toLowerCase() <= firstTableRows[(x + 1)].getElementsByTagName("td")[1].textContent.toLowerCase()
+                        if (results == (firstTableRows.length - 2)) {
+                            state = "ordered"
+                        }
+                    }
+                }
+                firstTableAlphCol.removeEventListener("click", firstTableAlphabeticallyDown)
+                firstTableAlphCol.addEventListener("click", firstTableAlphabeticallyUp)
+                firstTableNumCol.removeEventListener("click", firstTableNumericallyUp)
+                firstTableNumCol.addEventListener("click", firstTableNumericallyDown)
+            }
+            let firstTableNumericallyUp = function() {
+                let state = "unordered"
+                let results = 0
+                while (state == "unordered") {
+                    results = 0
+                    for (let i = 1; i < firstTableRows.length; i += 1) {
+                        let currentData = firstTableRows[i].getElementsByTagName("td")[0]
+                        let currentRow = firstTableRows[i]
+                        tally = 1
+                        for (let n = 1; n < firstTableRows.length; n += 1) {
+                            let result = currentData.textContent < firstTableRows[n].getElementsByTagName("td")[0].textContent
+                            tally += result
+                        }
+                        document.body.getElementsByTagName("table")[0].childNodes[1].insertBefore(currentRow, firstTableRows[tally])
+                    }
+                    for (let x = 1; x < firstTableRows.length - 1; x += 1) {
+                        results += firstTableRows[x].getElementsByTagName("td")[0].textContent >= firstTableRows[(x + 1)].getElementsByTagName("td")[0].textContent
+                        if (results == (firstTableRows.length - 2)) {
+                            state = "ordered"
+                        }
+                    }
+                }
+                firstTableNumCol.removeEventListener("click", firstTableNumericallyUp)
+                firstTableNumCol.addEventListener("click", firstTableNumericallyDown)
+            }
+            let firstTableNumericallyDown = function() {
+                let state = "unordered"
+                let results = 0
+                while (state == "unordered") {
+                    results = 0
+                    for (let i = 1; i < firstTableRows.length; i += 1) {
+                        let currentData = firstTableRows[i].getElementsByTagName("td")[0]
+                        let currentRow = firstTableRows[i]
+                        tally = firstTableRows.length
+                        for (let n = 1; n < firstTableRows.length; n += 1) {
+                            let result = currentData.textContent < firstTableRows[n].getElementsByTagName("td")[0].textContent
+                            tally -= result
+                        }
+                        document.body.getElementsByTagName("table")[0].childNodes[1].insertBefore(currentRow, firstTableRows[tally])
+                    }
+                    for (let x = 1; x < firstTableRows.length - 1; x += 1) {
+                        results += firstTableRows[x].getElementsByTagName("td")[0].textContent <= firstTableRows[(x + 1)].getElementsByTagName("td")[0].textContent
+                        if (results == (firstTableRows.length - 2)) {
+                            state = "ordered"
+                        }
+                    }
+                }
+                firstTableNumCol.removeEventListener("click", firstTableNumericallyDown)
+                firstTableNumCol.addEventListener("click", firstTableNumericallyUp)
+                firstTableAlphCol.removeEventListener("click", firstTableAlphabeticallyUp)
+                firstTableAlphCol.addEventListener("click", firstTableAlphabeticallyDown)
+            }
+            let firstTableNumCol = document.querySelector("#firstTableNumCol")
+            let firstTableAlphCol = document.querySelector("#firstTableAlphCol")
+            firstTableNumCol.addEventListener("click", firstTableNumericallyDown)
+            firstTableAlphCol.addEventListener("click", firstTableAlphabeticallyDown)
+
+            let secondTableAlphabeticallyUp1 = function() {
+                let state = "unordered"
+                let results = 0
+                while (state == "unordered") {
+                    results = 0
+                    for (let i = 1; i < secondTableRows.length; i += 1) {
+                        let currentData = secondTableRows[i].getElementsByTagName("td")[1]
+                        let currentRow = secondTableRows[i]
+                        tally = 1
+                        for (let n = 1; n < secondTableRows.length; n += 1) {
+                            let result = currentData.textContent.toLowerCase() < secondTableRows[n].getElementsByTagName("td")[1].textContent.toLowerCase()
+                            tally += result
+                        }
+                        document.body.getElementsByTagName("table")[1].childNodes[1].insertBefore(currentRow, secondTableRows[tally])
+                    }
+                    for (let x = 1; x < secondTableRows.length - 1; x += 1) {
+                        results += secondTableRows[x].getElementsByTagName("td")[1].textContent.toLowerCase() >= secondTableRows[(x + 1)].getElementsByTagName("td")[1].textContent.toLowerCase()
+                        if (results == (secondTableRows.length - 2)) {
+                            state = "ordered"
+                        }
+                    }
+                }
+                secondTableAlphCol1.removeEventListener("click", secondTableAlphabeticallyUp1)
+                secondTableAlphCol1.addEventListener("click", secondTableAlphabeticallyDown1)
+            }
+            let secondTableAlphabeticallyDown1 = function() {
+                let state = "unordered"
+                let results = 0
+                while (state == "unordered") {
+                    results = 0
+                    for (let i = 1; i < secondTableRows.length; i += 1) {
+                        let currentData = secondTableRows[i].getElementsByTagName("td")[1]
+                        let currentRow = secondTableRows[i]
+                        tally = secondTableRows.length
+                        for (let n = 1; n < secondTableRows.length; n += 1) {
+                            let result = currentData.textContent.toLowerCase() < secondTableRows[n].getElementsByTagName("td")[1].textContent.toLowerCase()
+                            tally -= result
+                        }
+                        document.body.getElementsByTagName("table")[1].childNodes[1].insertBefore(currentRow, secondTableRows[tally])
+                    }
+                    for (let x = 1; x < secondTableRows.length - 1; x += 1) {
+                        results += secondTableRows[x].getElementsByTagName("td")[1].textContent.toLowerCase() <= secondTableRows[(x + 1)].getElementsByTagName("td")[1].textContent.toLowerCase()
+                        if (results == (secondTableRows.length - 2)) {
+                            state = "ordered"
+                            
+                        }
+                    }
+                }
+                secondTableAlphCol1.removeEventListener("click", secondTableAlphabeticallyDown1)
+                secondTableAlphCol1.addEventListener("click", secondTableAlphabeticallyUp1)
+                secondTableNumCol.removeEventListener("click", secondTableNumericallyUp)
+                secondTableNumCol.addEventListener("click", secondTableNumericallyDown)
+                secondTableAlphCol2.removeEventListener("click", secondTableAlphabeticallyUp2)
+                secondTableAlphCol2.addEventListener("click", secondTableAlphabeticallyDown2)
+            }
+
+            let secondTableAlphabeticallyUp2 = function() {
+                let state = "unordered"
+                let results = 0
+                while (state == "unordered") {
+                    results = 0
+                    for (let i = 1; i < secondTableRows.length; i += 1) {
+                        let currentData = secondTableRows[i].getElementsByTagName("td")[2]
+                        let currentRow = secondTableRows[i]
+                        tally = 1
+                        for (let n = 1; n < secondTableRows.length; n += 1) {
+                            let result = currentData.textContent.toLowerCase() < secondTableRows[n].getElementsByTagName("td")[2].textContent.toLowerCase()
+                            tally += result
+                        }
+                        document.body.getElementsByTagName("table")[1].childNodes[1].insertBefore(currentRow, secondTableRows[tally])
+                    }
+                    for (let x = 1; x < secondTableRows.length - 1; x += 1) {
+                        results += secondTableRows[x].getElementsByTagName("td")[2].textContent.toLowerCase() >= secondTableRows[(x + 1)].getElementsByTagName("td")[2].textContent.toLowerCase()
+                        if (results == (secondTableRows.length - 2)) {
+                            state = "ordered"
+                        }
+                    }
+                }
+                secondTableAlphCol2.removeEventListener("click", secondTableAlphabeticallyUp2)
+                secondTableAlphCol2.addEventListener("click", secondTableAlphabeticallyDown2)
+            }
+            let secondTableAlphabeticallyDown2 = function() {
+                let state = "unordered"
+                let results = 0
+                while (state == "unordered") {
+                    results = 0
+                    for (let i = 1; i < secondTableRows.length; i += 1) {
+                        let currentData = secondTableRows[i].getElementsByTagName("td")[2]
+                        let currentRow = secondTableRows[i]
+                        tally = secondTableRows.length
+                        for (let n = 1; n < secondTableRows.length; n += 1) {
+                            let result = currentData.textContent.toLowerCase() < secondTableRows[n].getElementsByTagName("td")[2].textContent.toLowerCase()
+                            tally -= result
+                        }
+                        document.body.getElementsByTagName("table")[1].childNodes[1].insertBefore(currentRow, secondTableRows[tally])
+                    }
+                    for (let x = 1; x < secondTableRows.length - 1; x += 1) {
+                        results += secondTableRows[x].getElementsByTagName("td")[2].textContent.toLowerCase() <= secondTableRows[(x + 1)].getElementsByTagName("td")[2].textContent.toLowerCase()
+                        if (results == (secondTableRows.length - 2)) {
+                            state = "ordered"
+                        }
+                    }
+                }
+                secondTableAlphCol1.removeEventListener("click", secondTableAlphabeticallyUp1)
+                secondTableAlphCol1.addEventListener("click", secondTableAlphabeticallyDown1)
+                secondTableNumCol.removeEventListener("click", secondTableNumericallyUp)
+                secondTableNumCol.addEventListener("click", secondTableNumericallyDown)
+                secondTableAlphCol2.removeEventListener("click", secondTableAlphabeticallyDown2)
+                secondTableAlphCol2.addEventListener("click", secondTableAlphabeticallyUp2)
+            }
+            let secondTableNumericallyUp = function() {
+                let state = "unordered"
+                let results = 0
+                while (state == "unordered") {
+                    results = 0
+                    for (let i = 1; i < secondTableRows.length; i += 1) {
+                        let currentData = secondTableRows[i].getElementsByTagName("td")[0]
+                        let currentRow = secondTableRows[i]
+                        tally = 1
+                        for (let n = 1; n < secondTableRows.length; n += 1) {
+                            let result = currentData.textContent < secondTableRows[n].getElementsByTagName("td")[0].textContent
+                            tally += result
+                        }
+                        document.body.getElementsByTagName("table")[1].childNodes[1].insertBefore(currentRow, secondTableRows[tally])
+                    }
+                    for (let x = 1; x < secondTableRows.length - 1; x += 1) {
+                        results += secondTableRows[x].getElementsByTagName("td")[0].textContent >= secondTableRows[(x + 1)].getElementsByTagName("td")[0].textContent
+                        if (results == (secondTableRows.length - 2)) {
+                            state = "ordered"
+                        }
+                    }
+                }
+                secondTableNumCol.removeEventListener("click", secondTableNumericallyUp)
+                secondTableNumCol.addEventListener("click", secondTableNumericallyDown)
+            }
+            let secondTableNumericallyDown = function() {
+                let state = "unordered"
+                let results = 0
+                while (state == "unordered") {
+                    results = 0
+                    for (let i = 1; i < secondTableRows.length; i += 1) {
+                        let currentData = secondTableRows[i].getElementsByTagName("td")[0]
+                        let currentRow = secondTableRows[i]
+                        tally = secondTableRows.length
+                        for (let n = 1; n < secondTableRows.length; n += 1) {
+                            let result = currentData.textContent < secondTableRows[n].getElementsByTagName("td")[0].textContent
+                            tally -= result
+                        }
+                        document.body.getElementsByTagName("table")[1].childNodes[1].insertBefore(currentRow, secondTableRows[tally])
+                    }
+                    for (let x = 1; x < secondTableRows.length - 1; x += 1) {
+                        results += secondTableRows[x].getElementsByTagName("td")[0].textContent <= secondTableRows[(x + 1)].getElementsByTagName("td")[0].textContent
+                        if (results == (secondTableRows.length - 2)) {
+                            state = "ordered"
+                        }
+                    }
+                }
+                secondTableNumCol.removeEventListener("click", secondTableNumericallyDown)
+                secondTableNumCol.addEventListener("click", secondTableNumericallyUp)
+                secondTableAlphCol1.removeEventListener("click", secondTableAlphabeticallyUp1)
+                secondTableAlphCol1.addEventListener("click", secondTableAlphabeticallyDown1)
+                secondTableAlphCol2.removeEventListener("click", secondTableAlphabeticallyUp2)
+                secondTableAlphCol2.addEventListener("click", secondTableAlphabeticallyDown2)
+            }
+            let secondTableNumCol = document.querySelector("#secondTableNumCol")
+            let secondTableAlphCol1 = document.querySelector("#secondTableAlphCol1")
+            let secondTableAlphCol2 = document.querySelector("#secondTableAlphCol2")
+            secondTableNumCol.addEventListener("click", secondTableNumericallyDown)
+            secondTableAlphCol1.addEventListener("click", secondTableAlphabeticallyDown1)
+            secondTableAlphCol2.addEventListener("click", secondTableAlphabeticallyDown2)
+
+            let thirdTableAlphabeticallyUp1 = function() {
+                let state = "unordered"
+                let results = 0
+                while (state == "unordered") {
+                    results = 0
+                    for (let i = 1; i < thirdTableRows.length; i += 1) {
+                        let currentData = thirdTableRows[i].getElementsByTagName("td")[1]
+                        let currentRow = thirdTableRows[i]
+                        tally = 1
+                        for (let n = 1; n < thirdTableRows.length; n += 1) {
+                            let result = currentData.textContent.toLowerCase() < thirdTableRows[n].getElementsByTagName("td")[1].textContent.toLowerCase()
+                            tally += result
+                        }
+                        document.body.getElementsByTagName("table")[2].childNodes[1].insertBefore(currentRow, thirdTableRows[tally])
+                    }
+                    for (let x = 1; x < thirdTableRows.length - 1; x += 1) {
+                        results += thirdTableRows[x].getElementsByTagName("td")[1].textContent.toLowerCase() >= thirdTableRows[(x + 1)].getElementsByTagName("td")[1].textContent.toLowerCase()
+                        if (results == (thirdTableRows.length - 2)) {
+                            state = "ordered"
+                        }
+                    }
+                }
+                thirdTableAlphCol1.removeEventListener("click", thirdTableAlphabeticallyUp1)
+                thirdTableAlphCol1.addEventListener("click", thirdTableAlphabeticallyDown1)
+            }
+            let thirdTableAlphabeticallyDown1 = function() {
+                let state = "unordered"
+                let results = 0
+                while (state == "unordered") {
+                    results = 0
+                    for (let i = 1; i < thirdTableRows.length; i += 1) {
+                        let currentData = thirdTableRows[i].getElementsByTagName("td")[1]
+                        let currentRow = thirdTableRows[i]
+                        tally = thirdTableRows.length
+                        for (let n = 1; n < thirdTableRows.length; n += 1) {
+                            let result = currentData.textContent.toLowerCase() < thirdTableRows[n].getElementsByTagName("td")[1].textContent.toLowerCase()
+                            tally -= result
+                        }
+                        document.body.getElementsByTagName("table")[2].childNodes[1].insertBefore(currentRow, thirdTableRows[tally])
+                    }
+                    for (let x = 1; x < thirdTableRows.length - 1; x += 1) {
+                        results += thirdTableRows[x].getElementsByTagName("td")[1].textContent.toLowerCase() <= thirdTableRows[(x + 1)].getElementsByTagName("td")[1].textContent.toLowerCase()
+                        if (results == (thirdTableRows.length - 2)) {
+                            state = "ordered"
+                        }
+                    }
+                }
+                thirdTableAlphCol1.removeEventListener("click", thirdTableAlphabeticallyDown1)
+                thirdTableAlphCol1.addEventListener("click", thirdTableAlphabeticallyUp1)
+                thirdTableNumCol.removeEventListener("click", thirdTableNumericallyUp)
+                thirdTableNumCol.addEventListener("click", thirdTableNumericallyDown)
+                thirdTableAlphCol2.removeEventListener("click", thirdTableAlphabeticallyUp2)
+                thirdTableAlphCol2.addEventListener("click", thirdTableAlphabeticallyDown2)
+            }
+            let thirdTableAlphabeticallyUp2 = function() {
+                let state = "unordered"
+                let results = 0
+                while (state == "unordered") {
+                    results = 0
+                    for (let i = 1; i < thirdTableRows.length; i += 1) {
+                        let currentData = thirdTableRows[i].getElementsByTagName("td")[2]
+                        let currentRow = thirdTableRows[i]
+                        tally = 1
+                        for (let n = 1; n < thirdTableRows.length; n += 1) {
+                            let result = currentData.textContent.toLowerCase() < thirdTableRows[n].getElementsByTagName("td")[2].textContent.toLowerCase()
+                            tally += result
+                        }
+                        document.body.getElementsByTagName("table")[2].childNodes[1].insertBefore(currentRow, thirdTableRows[tally])
+                    }
+                    for (let x = 1; x < thirdTableRows.length - 1; x += 1) {
+                        results += thirdTableRows[x].getElementsByTagName("td")[2].textContent.toLowerCase() >= thirdTableRows[(x + 1)].getElementsByTagName("td")[2].textContent.toLowerCase()
+                        if (results == (thirdTableRows.length - 2)) {
+                            state = "ordered"
+                        }
+                    }
+                }
+                thirdTableAlphCol2.removeEventListener("click", thirdTableAlphabeticallyUp2)
+                thirdTableAlphCol2.addEventListener("click", thirdTableAlphabeticallyDown2)
+            }
+            let thirdTableAlphabeticallyDown2 = function() {
+                let state = "unordered"
+                let results = 0
+                while (state == "unordered") {
+                    results = 0
+                    for (let i = 1; i < thirdTableRows.length; i += 1) {
+                        let currentData = thirdTableRows[i].getElementsByTagName("td")[2]
+                        let currentRow = thirdTableRows[i]
+                        tally = thirdTableRows.length
+                        for (let n = 1; n < thirdTableRows.length; n += 1) {
+                            let result = currentData.textContent.toLowerCase() < thirdTableRows[n].getElementsByTagName("td")[2].textContent.toLowerCase()
+                            tally -= result
+                        }
+                        document.body.getElementsByTagName("table")[2].childNodes[1].insertBefore(currentRow, thirdTableRows[tally])
+                    }
+                    for (let x = 1; x < thirdTableRows.length - 1; x += 1) {
+                        results += thirdTableRows[x].getElementsByTagName("td")[2].textContent.toLowerCase() <= thirdTableRows[(x + 1)].getElementsByTagName("td")[2].textContent.toLowerCase()
+                        if (results == (thirdTableRows.length - 2)) {
+                            state = "ordered"
+                        }
+                    }
+                }
+                thirdTableAlphCol1.removeEventListener("click", thirdTableAlphabeticallyUp1)
+                thirdTableAlphCol1.addEventListener("click", thirdTableAlphabeticallyDown1)
+                thirdTableNumCol.removeEventListener("click", thirdTableNumericallyUp)
+                thirdTableNumCol.addEventListener("click", thirdTableNumericallyDown)
+                thirdTableAlphCol2.removeEventListener("click", thirdTableAlphabeticallyDown2)
+                thirdTableAlphCol2.addEventListener("click", thirdTableAlphabeticallyUp2)
+            }
+            let thirdTableNumericallyUp = function() {
+                let state = "unordered"
+                let results = 0
+                while (state == "unordered") {
+                    results = 0
+                    for (let i = 1; i < thirdTableRows.length; i += 1) {
+                        let currentData = thirdTableRows[i].getElementsByTagName("td")[0]
+                        let currentRow = thirdTableRows[i]
+                        tally = 1
+                        for (let n = 1; n < thirdTableRows.length; n += 1) {
+                            let result = currentData.textContent < thirdTableRows[n].getElementsByTagName("td")[0].textContent
+                            tally += result
+                        }
+                        document.body.getElementsByTagName("table")[2].childNodes[1].insertBefore(currentRow, thirdTableRows[tally])
+                    }
+                    for (let x = 1; x < thirdTableRows.length - 1; x += 1) {
+                        results += thirdTableRows[x].getElementsByTagName("td")[0].textContent >= thirdTableRows[(x + 1)].getElementsByTagName("td")[0].textContent
+                        if (results == (thirdTableRows.length - 2)) {
+                            state = "ordered"
+                        }
+                    }
+                }
+                thirdTableNumCol.removeEventListener("click", thirdTableNumericallyUp)
+                thirdTableNumCol.addEventListener("click", thirdTableNumericallyDown)
+            }
+            let thirdTableNumericallyDown = function() {
+                let state = "unordered"
+                let results = 0
+                while (state == "unordered") {
+                    results = 0
+                    for (let i = 1; i < thirdTableRows.length; i += 1) {
+                        let currentData = thirdTableRows[i].getElementsByTagName("td")[0]
+                        let currentRow = thirdTableRows[i]
+                        tally = thirdTableRows.length
+                        for (let n = 1; n < thirdTableRows.length; n += 1) {
+                            let result = currentData.textContent < thirdTableRows[n].getElementsByTagName("td")[0].textContent
+                            tally -= result
+                        }
+                        document.body.getElementsByTagName("table")[2].childNodes[1].insertBefore(currentRow, thirdTableRows[tally])
+                    }
+                    for (let x = 1; x < thirdTableRows.length - 1; x += 1) {
+                        results += thirdTableRows[x].getElementsByTagName("td")[0].textContent <= thirdTableRows[(x + 1)].getElementsByTagName("td")[0].textContent
+                        if (results == (thirdTableRows.length - 2)) {
+                            state = "ordered"
+                        }
+                    }
+                }
+                thirdTableNumCol.removeEventListener("click", thirdTableNumericallyDown)
+                thirdTableNumCol.addEventListener("click", thirdTableNumericallyUp)
+                thirdTableAlphCol1.removeEventListener("click", thirdTableAlphabeticallyUp1)
+                thirdTableAlphCol1.addEventListener("click", thirdTableAlphabeticallyDown1)
+                thirdTableAlphCol2.removeEventListener("click", thirdTableAlphabeticallyUp2)
+                thirdTableAlphCol2.addEventListener("click", thirdTableAlphabeticallyDown2)
+            }
+            let thirdTableNumCol = document.querySelector("#thirdTableNumCol")
+            let thirdTableAlphCol1 = document.querySelector("#thirdTableAlphCol1")
+            let thirdTableAlphCol2 = document.querySelector("#thirdTableAlphCol2")
+            thirdTableNumCol.addEventListener("click", thirdTableNumericallyDown)
+            thirdTableAlphCol1.addEventListener("click", thirdTableAlphabeticallyDown1)
+            thirdTableAlphCol2.addEventListener("click", thirdTableAlphabeticallyDown2)
+
+            var interval
+            let counter = 1
+
+            let swiftAlbums = ["allPics/tSwift/1989.jpg", "allPics/tSwift/debut.jpg", "allPics/tSwift/evermore.jpg", "allPics/tSwift/fearless.jpg", "allPics/tSwift/lover.jpg", "allPics/tSwift/reputation.jpg", "allPics/tSwift/red.jpg"]
+            let swiftImage = document.querySelector("#tSwiftPics")
+            let imageChangeSwift = function() {
+                link = "different"
+                while (link != "same") {
+                    let changeTo = swiftAlbums[Math.floor(Math.random() * swiftAlbums.length)]
+                    if (changeTo != document.getElementById("tSwiftPics").getAttribute("src")) {
+                        document.getElementById("tSwiftPics").setAttribute("src", changeTo)
+                        link = "same"
+                    }
+                }
+                swiftImage.removeEventListener("mouseover", imageChangeSwift)
+                swiftImage.addEventListener("mouseout", originalImageSwift)
+                if (counter == 1) {
+                    interval = window.setInterval(imageChangeSwift, 3000)
+                }
+                counter += 1
+            }
+            let originalImageSwift = function() {
+                counter = 1
+                document.getElementById("tSwiftPics").setAttribute("src", "allPics/tSwift/tSwift.jpg")
+                swiftImage.removeEventListener("mouseout", originalImageSwift)
+                clearInterval(interval)
+                swiftImage.addEventListener("mouseover", imageChangeSwift)
+            }
+            swiftImage.addEventListener("mouseover", imageChangeSwift)
+
+            let drakeAlbums = ["allPics/drake/ifYoureReadingThis.jpg", "allPics/drake/nothingWasTheSame.jpg", "allPics/drake/scorpion.jpg", "allPics/drake/takeCare.jpg", "allPics/drake/thankMeLater.jpg", "allPics/drake/views.jpg"]
+            let drakeImage = document.querySelector("#drakePics")
+            let imageChangeDrake = function() {
+                link = "different"
+                while (link != "same") {
+                    let changeTo = drakeAlbums[Math.floor(Math.random() * drakeAlbums.length)]
+                    if (changeTo != document.getElementById("drakePics").getAttribute("src")) {
+                        document.getElementById("drakePics").setAttribute("src", changeTo)
+                        link = "same"
+                    }
+                }
+                drakeImage.removeEventListener("mouseover", imageChangeDrake)
+                drakeImage.addEventListener("mouseout", originalImageDrake)
+                if (counter == 1) {
+                    interval = window.setInterval(imageChangeDrake, 3000)
+                }
+                counter += 1
+            }
+            let originalImageDrake = function() {
+                counter = 1
+                document.getElementById("drakePics").setAttribute("src", "allPics/drake/drake.jpg")
+                drakeImage.removeEventListener("mouseout", originalImageDrake)
+                clearInterval(interval)
+                drakeImage.addEventListener("mouseover", imageChangeDrake)
+            }
+            drakeImage.addEventListener("mouseover", imageChangeDrake)
+
+            let duaLipaAlbums = ["allPics/duaLipa/futureNostalgia.jpg", "allPics/duaLipa/moonlight.jpg", "allPics/duaLipa/selfTitled.jpg"]
+            let duaLipaImage = document.querySelector("#duaLipaPics")
+            let imageChangeDuaLipa = function() {
+                link = "different"
+                while (link != "same") {
+                    let changeTo = duaLipaAlbums[Math.floor(Math.random() * duaLipaAlbums.length)]
+                    if (changeTo != document.getElementById("duaLipaPics").getAttribute("src")) {
+                        document.getElementById("duaLipaPics").setAttribute("src", changeTo)
+                        link = "same"
+                    }
+                }
+                duaLipaImage.removeEventListener("mouseover", imageChangeDuaLipa)
+                duaLipaImage.addEventListener("mouseout", originalImageDuaLipa)
+                if (counter == 1) {
+                    interval = window.setInterval(imageChangeDuaLipa, 3000)
+                }
+                counter += 1
+            }
+            let originalImageDuaLipa = function() {
+                counter = 1
+                document.getElementById("duaLipaPics").setAttribute("src", "allPics/duaLipa/duaLipa.jpg")
+                duaLipaImage.removeEventListener("mouseout", originalImageDuaLipa)
+                clearInterval(interval)
+                duaLipaImage.addEventListener("mouseover", imageChangeDuaLipa)
+            }
+            duaLipaImage.addEventListener("mouseover", imageChangeDuaLipa)
+
+            let bieberAlbums = ["allPics/bieber/changes.jpg", "allPics/bieber/journals.jpg", "allPics/Bieber/justice.jpg", "allPics/bieber/purpose.jpg"]
+            let bieberImage = document.querySelector("#bieberPics")
+            let imageChangeBieber = function() {
+                link = "different"
+                while (link != "same") {
+                    let changeTo = bieberAlbums[Math.floor(Math.random() * bieberAlbums.length)]
+                    if (changeTo != document.getElementById("bieberPics").getAttribute("src")) {
+                        document.getElementById("bieberPics").setAttribute("src", changeTo)
+                        link = "same"
+                    }
+                }
+                bieberImage.removeEventListener("mouseover", imageChangeBieber)
+                bieberImage.addEventListener("mouseout", originalImageBieber)
+                if (counter == 1) {
+                    interval = window.setInterval(imageChangeBieber, 3000)
+                }
+                counter += 1
+            }
+            let originalImageBieber = function() {
+                counter = 1
+                document.getElementById("bieberPics").setAttribute("src", "allPics/bieber/bieber.jpg")
+                bieberImage.removeEventListener("mouseout", originalImageBieber)
+                clearInterval(interval)
+                bieberImage.addEventListener("mouseover", imageChangeBieber)
+            }
+            bieberImage.addEventListener("mouseover", imageChangeBieber)
+
+            let btsAlbums = ["allPics/bts/be.jpg", "allPics/bts/loveYourself.jpg", "allPics/bts/mapOfTheSoul.jpg", "allPics/bts/wings.jpg"]
+            let btsImage = document.querySelector("#btsPics")
+            let imageChangeBTS = function() {
+                link = "different"
+                while (link != "same") {
+                    let changeTo = btsAlbums[Math.floor(Math.random() * btsAlbums.length)]
+                    if (changeTo != document.getElementById("btsPics").getAttribute("src")) {
+                        document.getElementById("btsPics").setAttribute("src", changeTo)
+                        link = "same"
+                    }
+                }
+                btsImage.removeEventListener("mouseover", imageChangeBTS)
+                btsImage.addEventListener("mouseout", originalImageBTS)
+                if (counter == 1) {
+                    interval = window.setInterval(imageChangeBTS, 3000)
+                }
+                counter += 1
+            }
+            let originalImageBTS = function() {
+                counter = 1
+                document.getElementById("btsPics").setAttribute("src", "allPics/bts/bts.jpg")
+                btsImage.removeEventListener("mouseout", originalImageBTS)
+                clearInterval(interval)
+                btsImage.addEventListener("mouseover", imageChangeBTS)
+            }
+            btsImage.addEventListener("mouseover", imageChangeBTS)
+        </script>
+    </body>
+</html>
